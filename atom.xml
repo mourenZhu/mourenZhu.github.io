@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>某人的博客</title>
+  
+  
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-08-22T11:34:05.518Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>暑假的一天</title>
+    <link href="http://yoursite.com/2020/08/22/%E6%9A%91%E5%81%87%E7%9A%84%E4%B8%80%E5%A4%A9/"/>
+    <id>http://yoursite.com/2020/08/22/%E6%9A%91%E5%81%87%E7%9A%84%E4%B8%80%E5%A4%A9/</id>
+    <published>2020-08-22T11:28:55.000Z</published>
+    <updated>2020-08-22T11:34:05.518Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;暑假的一天极为普通&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="日常" scheme="http://yoursite.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+    <category term="test" scheme="http://yoursite.com/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2020/08/22/hello-world/"/>
+    <id>http://yoursite.com/2020/08/22/hello-world/</id>
+    <published>2020-08-22T08:42:40.414Z</published>
+    <updated>2020-08-22T08:42:40.414Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
