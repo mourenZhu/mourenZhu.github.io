@@ -6,7 +6,7 @@
   <link href="https://github.com/mourenZhu/mourenZhu.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/mourenZhu/mourenZhu.github.io/"/>
-  <updated>2021-11-13T02:01:01.994Z</updated>
+  <updated>2022-01-06T13:03:14.333Z</updated>
   <id>https://github.com/mourenZhu/mourenZhu.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>高等数学笔记(部分)</title>
+    <link href="https://github.com/mourenZhu/mourenZhu.github.io/2022/01/06/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0-%E9%83%A8%E5%88%86/"/>
+    <id>https://github.com/mourenZhu/mourenZhu.github.io/2022/01/06/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0-%E9%83%A8%E5%88%86/</id>
+    <published>2022-01-06T12:58:30.000Z</published>
+    <updated>2022-01-06T13:03:14.333Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="https://github.com/mourenZhu/mourenZhu.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="数学" scheme="https://github.com/mourenZhu/mourenZhu.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="笔记" scheme="https://github.com/mourenZhu/mourenZhu.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>KMP算法</title>
