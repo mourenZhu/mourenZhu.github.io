@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>写于二十一岁</title>
-    <url>/2021/08/02/%E5%86%99%E4%BA%8E%E4%BA%8C%E5%8D%81%E4%B8%80%E5%B2%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!--
- * @Author: your name
- * @Date: 2021-08-02 00:08:47
- * @LastEditTime: 2021-08-02 00:17:38
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \diaryc:\Users\mourenZhu\hexo\zhumouren\source\_posts\写于二十一岁.md
--->
-<h1 id="学于二十一岁"><a href="#学于二十一岁" class="headerlink" title="学于二十一岁"></a>学于二十一岁</h1><p>2021年8月1日，二十一岁这个时间点对我来说是具有一点特殊的意义。<br>结束了三年的大专生活，在暑假里已经体验了两个月的打工生活。但最重要的是期待一个月后的本科生活。<br>回想我这二十一年，最有意义、有趣的莫过于大专这三年。但在中学阶段也有两件影响我整个人生的大事。<br>第一件是在中考后，分数刚好能上普高的我最终没有受初中老师的哄骗去读职高而成为一个修车的。<br>第二件就是在高中没有一直堕落下去。高一的我根本不听任何课，上课只是在发呆或者玩手机。在高一下学期下午的某一节课，班主任在教育我们说要努力，努力是有希望的。听到这番话的我突然醒悟到不能一直这样下去，尝试开始听课、学习。虽然在现在看来我根本就没做任何努力，连一个高中生应该做的事都没有做好，每两周放假的两天时间里依旧是在打游戏，英语单词也没有记，化学也没有努力学习下去。但对比以往却是有了很大的进步。要是没有这点进步，我连这所改变我命运的大专都进不了。<br>在大专也是有两件事影响了我的整个人生。<br>第一件是在大一下学期听辅导员说学校机房管理员缺岗位，一天有三十元。我当时想着干一天就能买一本书，脑袋一发热就去申请这个岗位了。当时的我根本不可能想到我能在这个岗位上干了近乎两年，也让我的大学生活充满了意义与乐趣。在机房这个岗位上，我遇到了很好的老师，接触到了一些有意思的同学，听到了有趣的故事，也学习到了一些特别的经验。现在回想起来也会觉得我觉得我的大学生活是有趣的。<br>第二件就是遇到了一个好室友、好朋友。在他的影响下我参加了学校的项目组，并且和他还有另一个队友一起拿了省一等奖，一起专升本保送进入本科学习。在学习上，对计算机、编程的知识也有了很多进步。在生活中，倾听了我许多悲伤的情感叙说，不至于让内心过于压抑。<br>其实回想这四次重要的决定，每次都没有深思熟虑，只是头脑一发热就决定了。我现在能成为现在的我，一个我觉得还算不错的我，不能不说是一个幸运。相比于其他凭自己真正的努力和选择而成长的人，我还有很长的路要走。<br>地球上有生命是一个奇迹，但最大的奇迹是有一个人是我，生活中的任何烦心事对这个奇迹来说都微不足道。<br>我的二十一年已过去，后面的时间我也很期待！</p>
-]]></content>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>KMP算法</title>
     <url>/2021/11/01/KMP%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stdio.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获得目标串在某个位置匹配错误时，目标串应该跳转索引值，在pat[i]匹配错误时，i = lps[i-1]</span></span><br><span class="line"><span class="comment"> * @param pat 模式串</span></span><br><span class="line"><span class="comment"> * @param M 模式串的长度</span></span><br><span class="line"><span class="comment"> * @param lps(longest proper prefix which is also suffix) 对应索引值数组</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetLPSArray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pat, <span class="keyword">int</span> M, <span class="keyword">int</span> *lps)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// length of the previous longest prefix suffix(pat每个字符对应len都是包括当前字符在内的前len个字符与pat前len个字符相等)</span></span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 第一个总是0</span></span><br><span class="line">    lps[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// i 指pat的下标</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; M) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pat[i] == pat[len]) &#123;</span><br><span class="line">            len++;</span><br><span class="line">            lps[i] = len;</span><br><span class="line">            i++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 该情况的表现为pat[i]!=pat[0]</span></span><br><span class="line">            <span class="keyword">if</span> (len == <span class="number">0</span>) &#123;</span><br><span class="line">                lps[i] = <span class="number">0</span>;</span><br><span class="line">                i++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">/**</span></span><br><span class="line"><span class="comment">                 * 回退。这里比较难理解，我们先看我们已知的</span></span><br><span class="line"><span class="comment">                 * 1. 在这里我们知道pat[i]与pat[len]匹配错误</span></span><br><span class="line"><span class="comment">                 * 2. pat[i-len...i-1] == pat[0...len-1]</span></span><br><span class="line"><span class="comment">                 * pat[0...len-1]字符所对应的len在之前就已算出，试想这么一个图像</span></span><br><span class="line"><span class="comment">                 *   目标串 a b c a b x</span></span><br><span class="line"><span class="comment">                 *</span></span><br><span class="line"><span class="comment">                 *   a b c -&gt; a b c    -&gt; a b c      -&gt; a b c</span></span><br><span class="line"><span class="comment">                 *   a b x -&gt;   a b x  -&gt;     a b x  -&gt;       a b x</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                len = lps[len - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 得到pat在txt第一次出现的下标</span></span><br><span class="line"><span class="comment"> * @param pat 模式串</span></span><br><span class="line"><span class="comment"> * @param txt 目标串</span></span><br><span class="line"><span class="comment"> * @return 如果没有匹配的返回-1，如匹配返回出现位置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IndexKMP</span><span class="params">(<span class="keyword">char</span> *pat, <span class="keyword">char</span> *txt)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// i为txt(目标串)下标，j为pat(模式串)下标</span></span><br><span class="line">    <span class="keyword">int</span> patI = <span class="number">0</span>, txtI = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// pat长度</span></span><br><span class="line">    <span class="keyword">int</span> patLen = <span class="built_in">strlen</span>(pat);</span><br><span class="line">    <span class="comment">// txt长度</span></span><br><span class="line">    <span class="keyword">int</span> txtLen = <span class="built_in">strlen</span>(txt);</span><br><span class="line">    <span class="keyword">int</span> lps[patLen];</span><br><span class="line">    GetLPSArray(pat, patLen, lps);</span><br><span class="line">    <span class="keyword">while</span> (txtI &lt; txtLen) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pat[patI] == txt[txtI]) &#123;</span><br><span class="line">            patI++;</span><br><span class="line">            txtI++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (patI == patLen) &#123;</span><br><span class="line">            <span class="keyword">return</span> txtI - patI;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (txtI &lt; txtLen &amp;&amp; pat[patI] != txt[txtI]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (patI != <span class="number">0</span>) &#123;</span><br><span class="line">                patI = lps[patI - <span class="number">1</span>];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                txtI++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -438,6 +421,23 @@
       </tags>
   </entry>
   <entry>
+    <title>写于二十一岁</title>
+    <url>/2021/08/02/%E5%86%99%E4%BA%8E%E4%BA%8C%E5%8D%81%E4%B8%80%E5%B2%81/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!--
+ * @Author: your name
+ * @Date: 2021-08-02 00:08:47
+ * @LastEditTime: 2021-08-02 00:17:38
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \diaryc:\Users\mourenZhu\hexo\zhumouren\source\_posts\写于二十一岁.md
+-->
+<h1 id="学于二十一岁"><a href="#学于二十一岁" class="headerlink" title="学于二十一岁"></a>学于二十一岁</h1><p>2021年8月1日，二十一岁这个时间点对我来说是具有一点特殊的意义。<br>结束了三年的大专生活，在暑假里已经体验了两个月的打工生活。但最重要的是期待一个月后的本科生活。<br>回想我这二十一年，最有意义、有趣的莫过于大专这三年。但在中学阶段也有两件影响我整个人生的大事。<br>第一件是在中考后，分数刚好能上普高的我最终没有受初中老师的哄骗去读职高而成为一个修车的。<br>第二件就是在高中没有一直堕落下去。高一的我根本不听任何课，上课只是在发呆或者玩手机。在高一下学期下午的某一节课，班主任在教育我们说要努力，努力是有希望的。听到这番话的我突然醒悟到不能一直这样下去，尝试开始听课、学习。虽然在现在看来我根本就没做任何努力，连一个高中生应该做的事都没有做好，每两周放假的两天时间里依旧是在打游戏，英语单词也没有记，化学也没有努力学习下去。但对比以往却是有了很大的进步。要是没有这点进步，我连这所改变我命运的大专都进不了。<br>在大专也是有两件事影响了我的整个人生。<br>第一件是在大一下学期听辅导员说学校机房管理员缺岗位，一天有三十元。我当时想着干一天就能买一本书，脑袋一发热就去申请这个岗位了。当时的我根本不可能想到我能在这个岗位上干了近乎两年，也让我的大学生活充满了意义与乐趣。在机房这个岗位上，我遇到了很好的老师，接触到了一些有意思的同学，听到了有趣的故事，也学习到了一些特别的经验。现在回想起来也会觉得我觉得我的大学生活是有趣的。<br>第二件就是遇到了一个好室友、好朋友。在他的影响下我参加了学校的项目组，并且和他还有另一个队友一起拿了省一等奖，一起专升本保送进入本科学习。在学习上，对计算机、编程的知识也有了很多进步。在生活中，倾听了我许多悲伤的情感叙说，不至于让内心过于压抑。<br>其实回想这四次重要的决定，每次都没有深思熟虑，只是头脑一发热就决定了。我现在能成为现在的我，一个我觉得还算不错的我，不能不说是一个幸运。相比于其他凭自己真正的努力和选择而成长的人，我还有很长的路要走。<br>地球上有生命是一个奇迹，但最大的奇迹是有一个人是我，生活中的任何烦心事对这个奇迹来说都微不足道。<br>我的二十一年已过去，后面的时间我也很期待！</p>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>暑假的一天</title>
     <url>/2020/08/22/%E6%9A%91%E5%81%87%E7%9A%84%E4%B8%80%E5%A4%A9/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>暑假的一天极为普通</p>
@@ -471,6 +471,26 @@
       <tags>
         <tag>日常</tag>
         <tag>旅游</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>读《厌女：日本的女性嫌恶》</title>
+    <url>/2021/09/15/%E8%AF%BB%E3%80%8A%E5%8E%8C%E5%A5%B3%EF%BC%9A%E6%97%A5%E6%9C%AC%E7%9A%84%E5%A5%B3%E6%80%A7%E5%AB%8C%E6%81%B6%E3%80%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!--
+ * @Author: your name
+ * @Date: 2021-09-15 19:41:31
+ * @LastEditTime: 2021-09-15 19:46:42
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \diaryc:\Users\mourenZhu\hexo\zhumouren\source\_posts\读《厌女：日本的女性嫌恶》.md
+-->
+<p>机缘巧合下读到了日本学者上野千鹤子写的《厌女：日本的女性女性嫌恶》（以下简称《厌女》），虽然该书的案例全部发生在日本，但应该在中国也有相似点。<br>《厌女》中讨论的点太过繁杂，我仅在警醒自己不陷入厌女的角度下进行讨论。</p>
+<h1 id="什么是厌女症"><a href="#什么是厌女症" class="headerlink" title="什么是厌女症"></a>什么是厌女症</h1><p>我在书中并没有看到作者关于厌女症的定义，只是有提到它的表现。在男人身上表现为“女性蔑视”，在女人身上则表现为“自我厌恶”。书中有一个浅显的说法，有一次也没有庆幸过没生为女人的男人吗？有一次也没有抱怨过身为女人吃了亏的女人吗？<br>《厌女》中是每一章节讲述不同的群体的厌女症表现，所以本文也按《厌女》的章节来讨论。  </p>
+<h1 id="第一章-喜欢女人的男人的厌女症"><a href="#第一章-喜欢女人的男人的厌女症" class="headerlink" title="第一章-喜欢女人的男人的厌女症"></a>第一章-喜欢女人的男人的厌女症</h1><p>我想这章的核心是，男人在构造一个理想中的女人，但现实中的女人并不是这样。在整个社会的暴力下，会要求女人应该做到男人理想中的女人。  </p>
+<p>例如在中国有一句老话“男主外，女主内”，这强调的是只有男人能当大任，女人只能在家相夫教子。最离谱的是这一句话，我在一个女人口中听到过。<br>再有一个例子是最近在学校老师口中听到的，分别是一个男老师，一个女老师。这两位老师都说了一个大概相同的话“女孩子相比男孩子逻辑思维能力要差一点，所以你们可以不用研究那么深，之后工作了也可以从事软件测试之类简单的工作”。我想应该没有任何研究表明女人比男人弱吧，在历史上同样也有大量聪慧的女性。然而这句话，却可以让女人有放弃深入研究的理由—逻辑思维差一点。这里放弃深入研究学术，我想和女人放弃自己的权利没有任何区别。</p>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -646,26 +666,6 @@
       <tags>
         <tag>数学</tag>
         <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>读《厌女：日本的女性嫌恶》</title>
-    <url>/2021/09/15/%E8%AF%BB%E3%80%8A%E5%8E%8C%E5%A5%B3%EF%BC%9A%E6%97%A5%E6%9C%AC%E7%9A%84%E5%A5%B3%E6%80%A7%E5%AB%8C%E6%81%B6%E3%80%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!--
- * @Author: your name
- * @Date: 2021-09-15 19:41:31
- * @LastEditTime: 2021-09-15 19:46:42
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \diaryc:\Users\mourenZhu\hexo\zhumouren\source\_posts\读《厌女：日本的女性嫌恶》.md
--->
-<p>机缘巧合下读到了日本学者上野千鹤子写的《厌女：日本的女性女性嫌恶》（以下简称《厌女》），虽然该书的案例全部发生在日本，但应该在中国也有相似点。<br>《厌女》中讨论的点太过繁杂，我仅在警醒自己不陷入厌女的角度下进行讨论。</p>
-<h1 id="什么是厌女症"><a href="#什么是厌女症" class="headerlink" title="什么是厌女症"></a>什么是厌女症</h1><p>我在书中并没有看到作者关于厌女症的定义，只是有提到它的表现。在男人身上表现为“女性蔑视”，在女人身上则表现为“自我厌恶”。书中有一个浅显的说法，有一次也没有庆幸过没生为女人的男人吗？有一次也没有抱怨过身为女人吃了亏的女人吗？<br>《厌女》中是每一章节讲述不同的群体的厌女症表现，所以本文也按《厌女》的章节来讨论。  </p>
-<h1 id="第一章-喜欢女人的男人的厌女症"><a href="#第一章-喜欢女人的男人的厌女症" class="headerlink" title="第一章-喜欢女人的男人的厌女症"></a>第一章-喜欢女人的男人的厌女症</h1><p>我想这章的核心是，男人在构造一个理想中的女人，但现实中的女人并不是这样。在整个社会的暴力下，会要求女人应该做到男人理想中的女人。  </p>
-<p>例如在中国有一句老话“男主外，女主内”，这强调的是只有男人能当大任，女人只能在家相夫教子。最离谱的是这一句话，我在一个女人口中听到过。<br>再有一个例子是最近在学校老师口中听到的，分别是一个男老师，一个女老师。这两位老师都说了一个大概相同的话“女孩子相比男孩子逻辑思维能力要差一点，所以你们可以不用研究那么深，之后工作了也可以从事软件测试之类简单的工作”。我想应该没有任何研究表明女人比男人弱吧，在历史上同样也有大量聪慧的女性。然而这句话，却可以让女人有放弃深入研究的理由—逻辑思维差一点。这里放弃深入研究学术，我想和女人放弃自己的权利没有任何区别。</p>
-]]></content>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
 </search>
