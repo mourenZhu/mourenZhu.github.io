@@ -5857,4 +5857,19 @@
         <tag>新概念英语</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Spring Security 鉴权授权流程</title>
+    <url>/2022/09/19/Spring%20Security%20%E9%89%B4%E6%9D%83%E6%8E%88%E6%9D%83%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
+<li>spring boot 版本: 2.7.3</li>
+</ul>
+<h1 id="spring-security-基本原理"><a href="#spring-security-基本原理" class="headerlink" title="spring security 基本原理"></a>spring security 基本原理</h1><h1 id="spring-security-如何鉴权"><a href="#spring-security-如何鉴权" class="headerlink" title="spring security 如何鉴权"></a>spring security 如何鉴权</h1><h1 id="spring-security-如何授权"><a href="#spring-security-如何授权" class="headerlink" title="spring security 如何授权"></a>spring security 如何授权</h1><h1 id="spring-security-jwt"><a href="#spring-security-jwt" class="headerlink" title="spring security + jwt"></a>spring security + jwt</h1>]]></content>
+      <categories>
+        <category>技术详解</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>spring</tag>
+      </tags>
+  </entry>
 </search>
