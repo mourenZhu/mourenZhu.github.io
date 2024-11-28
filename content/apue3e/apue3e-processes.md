@@ -1,7 +1,7 @@
 ---
 title: 'UNIX环境高级编程-进程操作'
 date: 2024-11-27T10:26:39+08:00
-draft: true
+draft: false
 tags: ["unix", "linux", "c"]
 author: ["zhumouren"]
 ---
