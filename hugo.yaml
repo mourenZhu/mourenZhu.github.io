@@ -13,7 +13,7 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-mainsections: ["posts", "zhumouren", "openwrt"]
+mainsections: ["posts", "zhumouren", "openwrt", "apue3e"]
 
 minify:
   disableXML: true
