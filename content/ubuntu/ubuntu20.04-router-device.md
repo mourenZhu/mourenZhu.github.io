@@ -16,9 +16,8 @@ author: ["zhumouren"]
 ## 修改内核参数
 ```shell
 vi /etc/sysctl.conf
-
-# 添加以下内容
-
+```
+```
 net.ipv4.ip_forward = 1
 net.ipv6.conf.all.forwarding = 1
 net.ipv6.conf.all.accept_ra = 2
@@ -29,11 +28,11 @@ net.ipv6.conf.all.accept_ra = 2
 ```shell
 udevadm info -a -p /sys/class/net/eth0 # 可以通过这个命令查看网口属性以编写下面的配置
 ```
+---
 ```shell
 vi /etc/udev/rules.d/70-persistent-net.rules
-
-# 添加以下内容
-
+```
+```
 SUBSYSTEM=="net", ACTION=="add", SUBSYSTEMS=="platform", KERNELS=="fe2a0000.ethernet", NAME="eth0"
 SUBSYSTEM=="net", ACTION=="add", SUBSYSTEMS=="platform", KERNELS=="fe010000.ethernet", NAME="eth1"
 SUBSYSTEM=="net", ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0001:11:00.0", NAME="eth2"
@@ -47,18 +46,19 @@ SUBSYSTEM=="net", ACTION=="add", SUBSYSTEMS=="pci", KERNELS=="0000:01:00.0", NAM
 
 ```shell
 vi /etc/network/interfaces.d/wan
-# 添加以下内容
+```
 
+```
 auto wan0
 iface wan0 inet dhcp
 bridge_ports eth0
 metric 30
 ```
-
+---
 ```shell
 vi /etc/network/interfaces.d/lan
-
-# 添加以下内容
+```
+```
 auto lan
 iface lan inet static
 bridge_ports eth1 eth2 eth3 eth4
@@ -71,8 +71,8 @@ netmask 255.255.255.0
 
 ```shell
 vi /etc/netplug/netplugd.conf
-
-# 添加以下内容
+```
+```
 wan*
 ```
 
@@ -82,18 +82,21 @@ wan*
 # 先下载dnsmasq
 sudo apt install dnsmasq
 ```
-
+---
 ```shell
 # 关闭 systemd-resolved dns解析
 vi /etc/systemd/resolved.conf
-
+```
+```
 [Resolve]
 DNSStubListener=no
 ```
-
+---
 ```shell
 # 配置dnsmasq dhcp server
 vi /etc/dnsmasq.d/dhcp.conf
+```
+```
 dhcp-range=set:lan,192.168.1.2,192.168.1.254,86400
 dhcp-option=tag:lan,1,255.255.255.0
 dhcp-option=tag:lan,3,192.168.1.1
@@ -104,7 +107,8 @@ dhcp-option=tag:lan,6,223.5.5.5,8.8.8.8
 
 ```shell
 vi /etc/dhcp/dhclient.conf
-# 添加以下内容
+```
+```
 timeout 20;
 retry 60;
 ```
@@ -117,9 +121,12 @@ retry 60;
 sudo apt install overlayroot
 
 vi /etc/overlayroot.conf
-# 
+```
+```
 overlayroot="tmpfs" # 或者/dev/mmcblk0p3等实际分区
 ```
 如果你的设备是x86架构，那恭喜你按上述方式做就能立马生效，但是如果是arm架构uboot启动，那就有点麻烦了。
 
-需要`sudo apt install initramfs-tools`，并用`update-initramfs -c -k $(uname -r)`生成`initrd.img-4.19.232`文件（不同内核后缀不一样）。然后将`initrd.img`复制到能让uboot读到的分区，设置uboot参数让uboot首先加载`initrd.img`启动`initramfs`。在RAM挂载`/`并启动系统运行`/init`，这样就可以在RAM中第二次挂载`/`，并且是用overlayfs的方式挂载。
+需要安装`sudo apt install initramfs-tools`，并用`update-initramfs -c -k $(uname -r)`生成`initrd.img-4.19.232`文件（不同内核后缀不一样）(默认生成在`/boot/`目录下)。然后将`initrd.img`复制到能让uboot读到的分区，设置uboot参数告知内核在指定位置读取`initramfs`到`RAM`中。
+
+大致的启动流程是`uboot`会将内核和`initramfs映像`加载到内存中并启动内核。内核会检查`initramfs`是否存在，如果找到，则将其挂载为`/`并运行`/init`。在`/init`中会使用`overlayfs`的方式第二次挂载`rootfs`。
